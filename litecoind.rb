@@ -7,7 +7,7 @@ class Litecoind < Formula
   version '0.8.5'
 
   head do
-    url 'https://github.com/litecoin-project/litecoin.git', :branch => 'master'
+    url 'https://github.com/litecoin-project/litecoin.git', :branch => 'master-0.8'
     version 'master'
 
     depends_on 'automake'
