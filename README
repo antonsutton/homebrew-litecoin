@@ -1,4 +1,5 @@
-This repository contains WyseNynja's UNOFFICIAL brews relating to bitcoin.
+This repository contains singingwolfboy's UNOFFICIAL brews relating to litecoin,
+forked from WyseNynja's homebrew-bitcoin tap.
 
 These brews can be installed via the raw GitHub URLs, or by cloning this
-repository locally with `brew tap WyseNynja/bitcoin`.
+repository locally with `brew tap singingwolfboy/litecoin`.

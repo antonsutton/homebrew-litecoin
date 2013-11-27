@@ -1,13 +1,13 @@
 require 'formula'
 
-class Bitcoind < Formula
-  homepage 'http://bitcoin.org/'
-  head 'https://github.com/bitcoin/bitcoin.git'
-  url 'https://github.com/bitcoin/bitcoin.git', :tag => 'v0.8.5'
-  version '0.8.5-brew1'
+class Litecoind < Formula
+  homepage 'http://litecoin.org/'
+  head 'https://github.com/litecoin-project/litecoin.git'
+  url 'https://github.com/litecoin-project/litecoin.git', :tag => 'v0.8.5'
+  version '0.8.5'
 
   head do
-    url 'https://github.com/bitcoin/bitcoin.git', :branch => 'master'
+    url 'https://github.com/litecoin-project/litecoin.git', :branch => 'master'
     version 'master'
 
     depends_on 'automake'
@@ -31,7 +31,7 @@ class Bitcoind < Formula
   end
 
   def install
-    raise 'Bitcoind currently requires --HEAD on Mavericks' if MacOS.version == :mavericks and not build.head?
+    raise 'Litecoind currently requires --HEAD on Mavericks' if MacOS.version == :mavericks and not build.head?
 
     if build.head?
       system "sh", "autogen.sh"
@@ -46,8 +46,8 @@ class Bitcoind < Formula
       end
     end
 
-    system "strip src/bitcoind"
-    bin.install "src/bitcoind"
+    system "strip src/litecoind"
+    bin.install "src/litecoind"
   end
 
   def plist; <<-EOS.undent
@@ -63,7 +63,7 @@ class Bitcoind < Formula
         <true/>
         <key>ProgramArguments</key>
         <array>
-          <string>#{opt_prefix}/bin/bitcoind</string>
+          <string>#{opt_prefix}/bin/litecoind</string>
           <string>-daemon</string>
         </array>
       </dict>
@@ -72,12 +72,12 @@ class Bitcoind < Formula
   end
 
   def caveats; <<-EOS.undent
-    You will need to setup your bitcoin.conf if you haven't already done so:
+    You will need to setup your litecoin.conf if you haven't already done so:
 
-    echo -e "rpcuser=bitcoinrpc\\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > ~/Library/Application\\ Support/Bitcoin/bitcoin.conf
-    chmod 600 ~/Library/Application\\ Support/Bitcoin/bitcoin.conf
+    echo -e "rpcuser=bitcoinrpc\\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > ~/Library/Application\\ Support/Litecoin/litecoin.conf
+    chmod 600 ~/Library/Application\\ Support/Litecoin/litecoin.conf
 
-    Use `bitcoind stop` to stop bitcoind if necessary! `brew services stop bitcoind` does not work!
+    Use `litecoind stop` to stop litecoind if necessary! `brew services stop litecoind` does not work!
     EOS
   end
 end
